@@ -1,4 +1,4 @@
-// models/Historial.js
+// Entidad Historial Medico
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 

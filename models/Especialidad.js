@@ -1,4 +1,4 @@
-// models/Especialidad.js
+// Entidad Especialidades
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 

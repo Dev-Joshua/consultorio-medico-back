@@ -1,4 +1,4 @@
-// models/Paciente.js
+// Entidad Paciente
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
