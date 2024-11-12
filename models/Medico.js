@@ -1,6 +1,7 @@
 // Entidad Medico
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const Especialidad = require('./Especialidad');
 
 const Medico = sequelize.define(
   'Medico',

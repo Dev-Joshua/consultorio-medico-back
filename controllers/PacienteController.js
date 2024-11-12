@@ -1,4 +1,4 @@
-const PacienteService = require('../services/PacienteService');
+const PacienteService = require('../services/pacienteService');
 
 // Obtener todos los pacientes
 exports.getPacientes = async (req, res) => {
