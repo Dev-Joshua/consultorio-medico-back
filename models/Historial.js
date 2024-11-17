@@ -1,6 +1,8 @@
 // Entidad Historial Medico
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const Paciente = require('./Paciente');
+const Consulta = require('./Consulta');
 
 const Historial = sequelize.define(
   'Historial',
@@ -18,17 +20,21 @@ const Historial = sequelize.define(
       },
       allowNull: false,
     },
-    enfermedad: {
-      type: DataTypes.STRING,
+    id_consulta: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'consulta_medica', // Nombre de la tabla en la base de datos
+        key: 'id_consulta',
+      },
       allowNull: false,
+    },
+    fecha_consulta: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     tratamiento: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
-    fecha_registro: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
     },
   },
   {
@@ -39,5 +45,6 @@ const Historial = sequelize.define(
 
 // Definición de la relación
 Historial.belongsTo(Paciente, { foreignKey: 'id_paciente' });
+Historial.belongsTo(Consulta, { foreignKey: 'id_consulta' });
 
 module.exports = Historial;

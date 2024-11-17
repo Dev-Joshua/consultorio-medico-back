@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pacienteController = require('../controllers/pacienteController');
 
+// Rutas
 router.get('/pacientes', pacienteController.getPacientes);
 router.post('/pacientes', pacienteController.createPaciente);
 router.get('/pacientes/:id', pacienteController.getPacienteById);
