@@ -1,6 +1,7 @@
 //Entidad Usuario
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const bcrypt = require('bcrypt');
 
 const Usuario = sequelize.define(
   'Usuario',
@@ -27,6 +28,20 @@ const Usuario = sequelize.define(
   {
     tableName: 'usuarios', // Nombre de la tabla en la base de datos
     timestamps: false,
+    hooks: {
+      beforeCreate: async (usuario) => {
+        // Encriptar la contraseña antes de crear el usuario
+        const salt = await bcrypt.genSalt(10);
+        usuario.contrasena = await bcrypt.hash(usuario.contrasena, salt);
+      },
+      beforeUpdate: async (usuario) => {
+        // Encriptar la contraseña antes de actualizar el usuario
+        if (usuario.changed('contrasena')) {
+          const salt = await bcrypt.genSalt(10);
+          usuario.contrasena = await bcrypt.hash(usuario.contrasena, salt);
+        }
+      },
+    },
   },
 );
 

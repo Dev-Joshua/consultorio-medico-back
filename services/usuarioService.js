@@ -14,7 +14,7 @@ class UsuarioService {
   }
 
   async updateUsuario(id, data) {
-    const usuario = await getUsuarioById(id);
+    const usuario = await Usuario.findByPk(id);
     if (!usuario) {
       throw new Error('Usuario no encontrado');
     }
@@ -22,7 +22,7 @@ class UsuarioService {
   }
 
   async deleteUsuario(id) {
-    const usuario = await getUsuarioById(id);
+    const usuario = await Usuario.findByPk(id);
     if (!usuario) {
       throw new Error('Usuario no encontrado');
     }
