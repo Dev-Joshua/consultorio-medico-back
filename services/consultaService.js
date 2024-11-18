@@ -14,7 +14,7 @@ class ConsultaService {
   }
 
   async updateConsulta(id, data) {
-    const consulta = await getConsultaById(id);
+    const consulta = await Consulta.findByPk(id);
     if (!consulta) {
       throw new Error('Consulta medica no encontrada');
     }
@@ -22,7 +22,7 @@ class ConsultaService {
   }
 
   async deleteConsulta(id) {
-    const consulta = await getConsultaById(id);
+    const consulta = await Consulta.findByPk(id);
     if (!consulta) {
       throw new Error('Consulta medica no encontrada');
     }

@@ -14,7 +14,7 @@ class HistorialService {
   }
 
   async updateHistorial(id, data) {
-    const historial = await getHistorialById(id);
+    const historial = await Historial.findByPk(id);
     if (!historial) {
       throw new Error('Historial medico no encontrado');
     }
@@ -22,7 +22,7 @@ class HistorialService {
   }
 
   async deleteHistorial(id) {
-    const historial = await getHistorialById(id);
+    const historial = await Historial.findByPk(id);
     if (!historial) {
       throw new Error('Historial medico no encontrado');
     }
