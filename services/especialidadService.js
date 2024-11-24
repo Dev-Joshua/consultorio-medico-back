@@ -2,7 +2,9 @@ const Especialidad = require('../models/Especialidad');
 
 class EspecialidadService {
   async getAllEspecialidades() {
-    return await Especialidad.findAll();
+    return await Especialidad.findAll({
+      order: [['id_especialidad', 'ASC']],
+    });
   }
 
   async createEspecialidad(data) {

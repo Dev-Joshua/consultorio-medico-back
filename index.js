@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 const port = 3000;
 const dbConnect = require('./config/db');
@@ -11,6 +13,15 @@ const consultasMedicasRoutes = require('./routes/consulta.router');
 const historialMedicoRoutes = require('./routes/historial.router');
 const usuarioRoutes = require('./routes/usuario.router');
 require('dotenv').config();
+
+// Configurar CORS
+app.use(
+  cors({
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  }),
+);
 
 // Verificar la conexión a la base de datos
 dbConnect

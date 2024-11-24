@@ -6,7 +6,11 @@ class MedicoService {
   }
 
   async createMedico(data) {
-    return await Medico.create(data);
+    const medicoData = {
+      ...data,
+      id_especialidad: data.especialidad, // Mapear 'especialidad' a 'id_especialidad'
+    };
+    return await Medico.create(medicoData);
   }
 
   async getMedicoById(id) {
